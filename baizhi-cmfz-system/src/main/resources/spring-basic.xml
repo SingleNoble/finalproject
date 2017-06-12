@@ -31,7 +31,7 @@
     <!--创建sqlSessionFactory-->
     <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
         <property name="dataSource" ref="druidDataSource"/>
-        <property name="mapperLocations" value="classpath:com/cmfz/mapper/*.xml"/>
+        <property name="mapperLocations" value="classpath:com/cmfz/mapper/*Mapper.xml"/>
         <property name="typeAliasesPackage" value="com.cmfz.entity"/>
     </bean>
 
@@ -46,7 +46,7 @@
     <!--管理DAO层对象-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <property name="basePackage" value="com.baizhi.dao"/>
+        <property name="basePackage" value="com.cmfz.dao"/>
     </bean>
 
 </beans>

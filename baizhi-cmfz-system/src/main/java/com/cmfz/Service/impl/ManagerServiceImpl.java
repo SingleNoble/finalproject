@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -24,6 +23,7 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Transactional
     public void add(Manager manager) {
+        System.out.println(managerDao);
         manager.setId(UUID.randomUUID().toString());
         String salt = SaltUtil.getSalt(4);
         manager.setSalt(salt);

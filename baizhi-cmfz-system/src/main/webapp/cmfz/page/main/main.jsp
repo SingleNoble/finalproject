@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" language="java" %>
 <%@include file="/cmfz/page/util/util.jsp"%>
 <html>
+<head>
     <title>持名法州后台主页</title>
     <script>
         var $menus,$tabs,$user;

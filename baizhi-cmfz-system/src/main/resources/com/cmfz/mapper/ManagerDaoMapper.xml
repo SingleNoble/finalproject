@@ -8,6 +8,10 @@
 		insert into f_manager values(#{id},#{name},#{password},#{salt},#{phone})
 	</insert>
 
+	<!-- 根据用户名查询 -->
+	<select id="selectById" parameterType="string">
+		select id,name,password,salt,phone from f_manager where name=#{name}
+	</select>
 
 
 </mapper>

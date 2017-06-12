@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" language="java" %>
-<%@include file="/chiming/page/util/util.jsp"%>
+<%@include file="/cmfz/page/util/util.jsp"%>
 <html>
 <head>
     <title>持名法州后台管理系统登录</title>
@@ -17,7 +17,7 @@
         /*function submit() {
             console.log(11111)
             $login.form('submit',{
-                url:'${appName}/chiming/page/main/main.jsp',
+                url:'/chiming/page/main/main.jsp',
             });
         }*/
     </script>
