@@ -1,0 +1,6 @@
+
+.idea/
+*.iml
+baizhi-cmfz-system/src/test/
+baizhi-cmfz-system/target/
+baizhi-commons/target/
