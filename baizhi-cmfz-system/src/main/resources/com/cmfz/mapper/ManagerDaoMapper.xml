@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmfz.dao.ManagerDao">
+
+
+	<!-- 注册 -->
+	<insert id="insert" parameterType="manager" >
+		insert into f_manager values(#{id},#{name},#{password},#{salt},#{phone})
+	</insert>
+
+
+
+</mapper>
