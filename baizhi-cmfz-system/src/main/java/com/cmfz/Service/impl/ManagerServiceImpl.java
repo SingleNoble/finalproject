@@ -5,11 +5,13 @@ import com.cmfz.dao.ManagerDao;
 import com.cmfz.entity.Manager;
 import com.cmfz.util.MD5Util;
 import com.cmfz.util.SaltUtil;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.List;
+
 import java.util.UUID;
 
 /**
@@ -23,7 +25,6 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Transactional
     public void add(Manager manager) {
-        System.out.println(managerDao);
         manager.setId(UUID.randomUUID().toString());
         String salt = SaltUtil.getSalt(4);
         manager.setSalt(salt);
@@ -43,11 +44,24 @@ public class ManagerServiceImpl implements ManagerService {
         return null;
     }
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
-    public List<Manager> queryAll() {
-        return null;
+    public Page<Manager> queryByPage(Integer pageNum,Integer pageSize) {
+        Page<Manager> page = PageHelper.startPage(pageNum, pageSize);
+        managerDao.selectAll();
+        return page;
     }
     @Transactional
     public Manager login(Manager manager) {
-        return null;
+
+        Manager managerDB = managerDao.selectByName(manager.getName());
+        if (managerDB!=null){
+            String password = MD5Util.getMd5Code(manager.getPassword() + managerDB.getSalt());
+            if (password.equals(managerDB.getPassword())){
+                return managerDB;
+            }else {
+                throw new RuntimeException("密码错误！！");
+            }
+        } else {
+            throw new RuntimeException("用户不存在！！");
+        }
     }
 }

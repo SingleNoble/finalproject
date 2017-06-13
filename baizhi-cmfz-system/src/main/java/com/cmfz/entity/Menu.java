@@ -1,6 +1,7 @@
 package com.cmfz.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 表f_menu对应的实体类
@@ -11,6 +12,8 @@ public class Menu implements Serializable{
     private String iconCls;
     private String href;
     private String lev;
+
+    private List<Menu> menus;
 
     public Menu() {
     }
@@ -61,6 +64,14 @@ public class Menu implements Serializable{
 
     public void setLev(String lev) {
         this.lev = lev;
+    }
+
+    public List<Menu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(List<Menu> menus) {
+        this.menus = menus;
     }
 
     @Override

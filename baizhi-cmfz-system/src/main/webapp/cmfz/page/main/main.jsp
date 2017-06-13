@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" language="java" %>
 <%@include file="/cmfz/page/util/util.jsp"%>
 <html>
-<head>
     <title>持名法州后台主页</title>
     <script>
         var $menus,$tabs,$user;
@@ -9,7 +8,7 @@
             $menus=$("#menus");
             $tabs=$("#tabs");
             $user=$("#user");
-            $.post("<c:url value='/cmfz/page/json/menu.json'/>",function (menus) {
+            $.post("${appName}/cmfz/page/json/menu.json",function (menus) {
                 $.each(menus,function (i,menu) {
                     var content = "<div style='text-align: center;'>";
                     $.each(menu.children,function (j,child) {
@@ -49,7 +48,7 @@
 <body>
     <div id="cc" class="easyui-layout" data-options="fit:true" style="width:600px;height:400px;">
         <div data-options="region:'north'" style="height:60px;">
-            <a id="user" onclick="showuser()" class="easyui-linkbutton" data-options=" iconCls:'icon-man',plain:true"></a>
+            <a id="user" onclick="showuser()" class="easyui-linkbutton" data-options="plain:true"></a>
             <h1 style="text-align: center">持名法州后台管理系统</h1>
         </div>
         <div data-options="region:'south'" style="height:60px;"></div>

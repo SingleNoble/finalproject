@@ -8,18 +8,21 @@
         $(function () {
             $lbtn=$("#lbtn");
             $login=$("#login");
+
             $lbtn.linkbutton({
                 text:'登录',
                 width:100,
-                plain:true,
+                height:30,
+                plain:false,
+
             });
+            function submit() {
+                     console.log(11111);
+                     $login.form('submit',{
+                     url:'${appName}/cmfz/page/main/main.jsp',
+                 });
+             }
         });
-        /*function submit() {
-            console.log(11111)
-            $login.form('submit',{
-                url:'/chiming/page/main/main.jsp',
-            });
-        }*/
     </script>
     <style>
 
@@ -29,14 +32,14 @@
     <div style="text-align: center;margin-top: 50px;">
         <h1>持名法州后台管理系统登录</h1>
         <div style="margin-top: 200px;width: 300px;height: 200px;margin-left: 500px">
-            <form action="${appName}/chiming/page/main/main.jsp" method="post" id="login">
+            <form action="${appName}/cmfz/page/main/main.jsp" method="post" id="login">
                 <div style="margin-bottom: 10px">
                     <span>用户名:</span>
-                    <input id="username"type="text" class="easyui-textbox" data-options="required:true,iconCls:'icon-man'"/><br/>
+                    <input id="username" name="name" type="text" class="easyui-textbox" data-options="required:true,iconCls:'icon-man'"/><br/>
                 </div>
                 <div>
-                    <span>密码&nbsp;&nbsp;:</span>
-                    <input id="password" type="password" class="easyui-passwordbox" data-options="required:true"/>
+                    <span>密&nbsp;&nbsp;&nbsp;码:</span>
+                    <input id="password"  name="password" type="password" class="easyui-passwordbox" data-options="required:true"/>
                 </div>
                 <div style="margin-top: 20px">
                     <%--<a  onclick="submit()" id="lbtn" class="easyui-linkbutton"></a>--%>

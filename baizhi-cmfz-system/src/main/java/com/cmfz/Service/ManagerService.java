@@ -1,6 +1,7 @@
 package com.cmfz.Service;
 
 import com.cmfz.entity.Manager;
+import com.github.pagehelper.Page;
 
 import java.util.List;
 
@@ -38,7 +39,7 @@ public interface ManagerService {
      * 查询所有管理员信息
      * @return
      */
-    List<Manager> queryAll();
+    Page<Manager> queryByPage(Integer pageNum,Integer pageSize);
 
     /**
      * 登录验证

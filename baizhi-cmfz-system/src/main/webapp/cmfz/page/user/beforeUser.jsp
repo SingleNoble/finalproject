@@ -1,10 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" language="java" %>
+<%@include file="/cmfz/page/util/util.jsp"%>
 <script>
     var $buser;
     $(function () {
         $buser=$("#buser");
         $buser.datagrid({
-            url:"${pageContext.request.contextPath}/chiming/page/json/users.json",
+            url:"${pageContext.request.contextPath}/cmfz/page/json/users.json",
             method:"post",
             pagination:true,
             pageNumber:1,
