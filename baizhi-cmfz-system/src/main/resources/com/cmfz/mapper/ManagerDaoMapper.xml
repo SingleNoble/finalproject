@@ -13,5 +13,10 @@
 		select id,name,password,salt,phone from f_manager where name=#{name}
 	</select>
 
+	<!--查询所有-->
+	<select id="selectAll" resultType="manager">
+		select id,name,password,salt,phone from f_manager
+	</select>
+
 
 </mapper>

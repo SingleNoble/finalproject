@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmfz.dao.RotationDao">
+
+    <!--添加-->
+    <insert id="insert" parameterType="rotation">
+        insert into f_rotation values(#{id},#{description},#{filepath})
+    </insert>
+
+    <!--查询所有-->
+    <select id="selectAll" resultType="menu">
+        select id,description,filepath from f_rotation
+    </select>
+
+</mapper>

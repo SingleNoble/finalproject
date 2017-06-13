@@ -17,9 +17,12 @@
 
             });
             function submit() {
-                     console.log(11111);
                      $login.form('submit',{
-                     url:'${appName}/cmfz/page/main/main.jsp',
+                         onSubmit: function(param){
+                             param.name = name;
+                             param.password = password;
+                         },
+                         url:'${appName}/manager/login',
                  });
              }
         });
@@ -42,7 +45,6 @@
                     <input id="password"  name="password" type="password" class="easyui-passwordbox" data-options="required:true"/>
                 </div>
                 <div style="margin-top: 20px">
-                    <%--<a  onclick="submit()" id="lbtn" class="easyui-linkbutton"></a>--%>
                     <input type="submit" value="登录" />
                 </div>
             </form>

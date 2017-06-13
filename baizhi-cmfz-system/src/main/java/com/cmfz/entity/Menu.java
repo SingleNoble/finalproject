@@ -13,7 +13,7 @@ public class Menu implements Serializable{
     private String href;
     private String lev;
 
-    private List<Menu> menus;
+    private List<Menu> children;
 
     public Menu() {
     }
@@ -66,12 +66,12 @@ public class Menu implements Serializable{
         this.lev = lev;
     }
 
-    public List<Menu> getMenus() {
-        return menus;
+    public List<Menu> getChildren() {
+        return children;
     }
 
-    public void setMenus(List<Menu> menus) {
-        this.menus = menus;
+    public void setChildren(List<Menu> children) {
+        this.children = children;
     }
 
     @Override

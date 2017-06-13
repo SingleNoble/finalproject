@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -21,6 +23,7 @@ public class ManagerController {
 
     @RequestMapping("/login")
     public String login(Manager manager, HttpSession session){
+        System.out.println(manager);
         Manager managerDB = null;
         try {
             managerDB = managerService.login(manager);
@@ -34,8 +37,14 @@ public class ManagerController {
     }
     @RequestMapping("/queryByPage")
     @ResponseBody
-    public void queryByPage(Integer pageNum,Integer pageSize){
-        Page<Manager> managers = managerService.queryByPage(pageNum, pageSize);
+    public Map<String,Object> queryByPage(Integer pageNum, Integer pageSize){
+        pageNum = (pageNum == null || pageNum == 0) ? 1 : pageNum;
+        pageSize = (pageSize == null || pageSize == 0) ? 2 : pageSize;
+        Page<Manager> page = managerService.queryByPage(pageNum, pageSize);
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        map.put("total",page.getTotal());
+        map.put("rows",page.getResult());
+        return map;
     }
 
 }

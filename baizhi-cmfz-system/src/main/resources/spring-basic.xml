@@ -33,6 +33,11 @@
         <property name="dataSource" ref="druidDataSource"/>
         <property name="mapperLocations" value="classpath:com/cmfz/mapper/*Mapper.xml"/>
         <property name="typeAliasesPackage" value="com.cmfz.entity"/>
+        <property name="plugins">
+            <array>
+                <ref bean="pageInterceptor"/>
+            </array>
+        </property>
     </bean>
 
     <!--开启事务管理器-->
@@ -47,6 +52,16 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <property name="basePackage" value="com.cmfz.dao"/>
+    </bean>
+
+    <!--分页-->
+    <bean class="com.github.pagehelper.PageInterceptor" id="pageInterceptor">
+        <property name="properties">
+            <value>
+                helperDialect=mysql
+                rowBoundswitchCount=true
+            </value>
+        </property>
     </bean>
 
 </beans>

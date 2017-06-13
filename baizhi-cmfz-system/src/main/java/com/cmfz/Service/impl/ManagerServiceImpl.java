@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -46,7 +47,8 @@ public class ManagerServiceImpl implements ManagerService {
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
     public Page<Manager> queryByPage(Integer pageNum,Integer pageSize) {
         Page<Manager> page = PageHelper.startPage(pageNum, pageSize);
-        managerDao.selectAll();
+        List<Manager> managers = managerDao.selectAll();
+        System.out.println(managers);
         return page;
     }
     @Transactional

@@ -10,7 +10,7 @@
         <result column="href" property="href"/>
         <result column="lev" property="lev"/>
 
-        <collection property="menus" javaType="list" ofType="menu"
+        <collection property="children" javaType="list" ofType="menu"
                     select="com.cmfz.dao.MenuDao.selectByParentId" column="id"/>
 
     </resultMap>

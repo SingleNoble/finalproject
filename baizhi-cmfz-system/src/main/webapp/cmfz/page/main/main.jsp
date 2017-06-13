@@ -8,7 +8,7 @@
             $menus=$("#menus");
             $tabs=$("#tabs");
             $user=$("#user");
-            $.post("${appName}/cmfz/page/json/menu.json",function (menus) {
+            $.post("<c:url value='/menu/queryAll'/>",function (menus) {
                 $.each(menus,function (i,menu) {
                     var content = "<div style='text-align: center;'>";
                     $.each(menu.children,function (j,child) {
