@@ -3,8 +3,6 @@ package com.cmfz.Service;
 import com.cmfz.entity.Rotation;
 import com.github.pagehelper.Page;
 
-import java.util.List;
-
 /**
  *
  */
@@ -21,5 +19,11 @@ public interface RotationService {
      * @return
      */
     Page<Rotation> queryByPage(Integer pageNum,Integer pageSize);
+
+    /**
+     * 删除
+     * @param id
+     */
+    void drop(String id);
 
 }

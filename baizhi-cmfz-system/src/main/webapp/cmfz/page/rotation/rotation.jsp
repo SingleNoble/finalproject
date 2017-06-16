@@ -9,6 +9,7 @@
             url:"${pageContext.request.contextPath}/rotation/queryByPage",
             method:"post",
             pagination:true,
+            fit:true,
             pageNumber:1,
             pageList:[2,4,6,8],
             pageSize:2,
@@ -16,7 +17,7 @@
             columns:[[
                 {field:"id",title:"编号",width:140},
                 {field:"description",title:"描述",width:80},
-                {field:"filePath",title:"路径",width:80},
+                {field:"filepath",title:"路径",width:80},
                 {field:"o",title:"操作",width:80,
                     formatter:function (value,row,index) {
                         var id=row.id;
@@ -74,12 +75,13 @@
             if(r){
                 //发送异步请求删除数据
                 $.get('${pageContext.request.contextPath}/rotation/drop?id='+id,function (result) {
-
+                    if(result.isEqual("success")){
+                        $.messager.alert({
+                            title:"删除提示",
+                            msg:"删除成功"
+                        });
+                    }
                 },'json');
-                $.messager.alert({
-                    title:"删除提示",
-                    msg:"删除成功"
-                });
                 $rtt.datagrid('reload');
             }
         });

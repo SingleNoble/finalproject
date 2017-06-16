@@ -37,13 +37,11 @@ public class ManagerController {
     }
     @RequestMapping("/queryByPage")
     @ResponseBody
-    public Map<String,Object> queryByPage(Integer pageNum, Integer pageSize){
-        pageNum = (pageNum == null || pageNum == 0) ? 1 : pageNum;
-        pageSize = (pageSize == null || pageSize == 0) ? 2 : pageSize;
-        Page<Manager> page = managerService.queryByPage(pageNum, pageSize);
+    public Map<String,Object> queryByPage(Integer page, Integer rows){
+        Page<Manager> pages = managerService.queryByPage(page , rows);
         HashMap<String, Object> map = new HashMap<String, Object>();
-        map.put("total",page.getTotal());
-        map.put("rows",page.getResult());
+        map.put("total",pages.getTotal());
+        map.put("rows",pages.getResult());
         return map;
     }
 

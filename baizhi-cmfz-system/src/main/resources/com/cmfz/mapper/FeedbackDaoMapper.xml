@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmfz.dao.FeedbackDao">
+
+    <!--封装关系属性-->
+    <resultMap id="feedbackMap" type="list">
+        <id column="id" property="id"/>
+        <result column="content" property="content"/>
+        <association property="user" javaType="user" column="userid"
+                     select="com.cmfz.dao.UserDao.selectById"/>
+    </resultMap>
+
+    <!--查询所有-->
+    <select id="selectAll" resultMap="feedbackMap">
+        select id,content,userid from f_feedback
+    </select>
+
+</mapper>

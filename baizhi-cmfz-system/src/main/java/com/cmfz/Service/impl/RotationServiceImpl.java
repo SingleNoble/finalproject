@@ -34,4 +34,9 @@ public class RotationServiceImpl implements RotationService {
         return page;
     }
 
+    @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
+    public void drop(String id) {
+        rotationDao.delete(id);
+    }
+
 }

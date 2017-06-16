@@ -8,8 +8,13 @@
     </insert>
 
     <!--查询所有-->
-    <select id="selectAll" resultType="menu">
+    <select id="selectAll" resultType="rotation">
         select id,description,filepath from f_rotation
     </select>
+
+    <!--删除文件-->
+    <delete id="delete" parameterType="string">
+        delete from f_rotation where id=#{id}
+    </delete>
 
 </mapper>

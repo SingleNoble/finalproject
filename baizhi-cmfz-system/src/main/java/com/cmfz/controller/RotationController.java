@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.io.File;
@@ -26,10 +25,12 @@ public class RotationController {
     @Resource
     private RotationService rotationService;
 
-    @RequestMapping
-    public void uploadImg(MultipartFile multipartFile, HttpSession session,String description){
+    @RequestMapping("/add")
+    public String uploadImg(MultipartFile multipartFile, HttpSession session,String description){
         String realPath = session.getServletContext().getRealPath("/");
-        realPath += "/cmfz/image";
+        realPath += "cmfz\\image\\";
+
+        System.out.println(realPath);
 
         File file = new File(realPath);
         if(!file.exists()){
@@ -42,6 +43,8 @@ public class RotationController {
         //重命名文件 新文件名为 系统当前时间戳 + 文件后缀名
         String newName = new SimpleDateFormat("yyyyMMddHHmmssSSSS").format(new Date())+"."+extension;
 
+        System.out.println(newName);
+
         Rotation rotation = new Rotation();
         rotation.setDescription(description);
         rotation.setFilepath(realPath+newName);
@@ -52,18 +55,23 @@ public class RotationController {
         }catch (Exception e){
             throw new RuntimeException("文件上传失败！！");
         }
+        return "";
     }
 
     @RequestMapping("/queryByPage")
     @ResponseBody
-    public Map<String,Object> queryByPage(Integer pageNum, Integer pageSize){
-        pageNum = (pageNum == null || pageNum == 0) ? 1 : pageNum;
-        pageSize = (pageSize == null || pageSize == 0) ? 2 : pageSize;
-        Page<Rotation> page = rotationService.queryByPage(pageNum, pageSize);
+    public Map<String,Object> queryByPage(Integer page, Integer rows){
+        Page<Rotation> pages = rotationService.queryByPage(page, rows);
         HashMap<String, Object> map = new HashMap<String, Object>();
-        map.put("total",page.getTotal());
-        map.put("rows",page.getResult());
+        map.put("total",pages.getTotal());
+        map.put("rows",pages.getResult());
         return map;
+    }
+
+    @RequestMapping("drop")
+    public String drop(String id){
+        rotationService.drop(id);
+        return "success";
     }
 
 }
