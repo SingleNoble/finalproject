@@ -44,5 +44,38 @@ public class ManagerController {
         map.put("rows",pages.getResult());
         return map;
     }
+    @RequestMapping("/delete")
+    @ResponseBody
+    public Map<String,String> delete(String id){
+        Map<String, String> map = new HashMap<String, String>();
+        try {
+            managerService.drop(id);
+            map.put("message","删除成功！！");
+        }catch (Exception e){
+            map.put("message","删除失败！！");
+        }
+        return map;
+    }
+
+    @RequestMapping("queryOne")
+    @ResponseBody
+    public Manager queryOne(String id){
+        Manager manager = managerService.queryById(id);
+        return manager;
+    }
+
+    @RequestMapping("/update")
+    @ResponseBody
+    public Map<String,String> delete(Manager manager){
+        Map<String, String> map = new HashMap<String, String>();
+        try {
+            managerService.change(manager);
+            map.put("message","修改成功！！");
+        } catch (Exception e) {
+            map.put("message","修改失败！！");
+        }
+        System.out.println(map);
+        return map;
+    }
 
 }

@@ -3,7 +3,7 @@
 <mapper namespace="com.cmfz.dao.FeedbackDao">
 
     <!--封装关系属性-->
-    <resultMap id="feedbackMap" type="list">
+    <resultMap id="feedbackMap" type="feedback">
         <id column="id" property="id"/>
         <result column="content" property="content"/>
         <association property="user" javaType="user" column="userid"

@@ -18,7 +18,14 @@
     <!--配置处理器映射器和处理器适配器-->
     <mvc:annotation-driven>
         <mvc:message-converters>
-            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter"/>
+            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter" id="jsonConverter">
+                <property name="supportedMediaTypes" value="application/json;charset=UTF-8"/>
+                <property name="features">
+                    <array value-type="com.alibaba.fastjson.serializer.SerializerFeature">
+                        <value>DisableCircularReferenceDetect</value>
+                    </array>
+                </property>
+            </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
 

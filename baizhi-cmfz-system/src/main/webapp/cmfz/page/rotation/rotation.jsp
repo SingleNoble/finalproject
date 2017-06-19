@@ -82,7 +82,7 @@
                         });
                     }
                 },'json');
-                $rtt.datagrid('reload');
+=                $rtt.datagrid('reload');
             }
         });
     }

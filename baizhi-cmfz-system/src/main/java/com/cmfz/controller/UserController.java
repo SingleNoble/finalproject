@@ -29,4 +29,17 @@ public class UserController {
         return map;
     }
 
+    @RequestMapping("/delete")
+    @ResponseBody
+    public Map<String,String> delete(String id){
+        HashMap<String, String> map = new HashMap<String, String>();
+        try {
+            userService.delete(id);
+            map.put("message","删除成功！！");
+        }catch (Exception e){
+            map.put("message","删除失败！！");
+        }
+        return map;
+    }
+
 }

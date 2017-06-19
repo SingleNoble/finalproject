@@ -16,4 +16,10 @@ public interface UserService {
      */
     Page<User> queryByPage(Integer pageNum,Integer pageSize);
 
+    /**
+     * 删除
+     * @param id
+     */
+    void delete(String id);
+
 }

@@ -34,21 +34,23 @@ public class ManagerServiceImpl implements ManagerService {
     }
     @Transactional
     public void drop(String id) {
-
+        managerDao.delete(id);
     }
+
     @Transactional
     public void change(Manager manager) {
-
+        managerDao.update(manager);
     }
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
     public Manager queryById(String id) {
-        return null;
+        Manager manager = managerDao.selectById(id);
+        return manager;
     }
+
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
     public Page<Manager> queryByPage(Integer pageNum,Integer pageSize) {
         Page<Manager> page = PageHelper.startPage(pageNum, pageSize);
         List<Manager> managers = managerDao.selectAll();
-        System.out.println(managers);
         return page;
     }
     @Transactional

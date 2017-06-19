@@ -16,6 +16,10 @@ public class User implements Serializable{
     private String phone;
     private String imgpath;
 
+    private Master master;
+    private Province province;
+    private City city;
+
     public User() {
     }
 
@@ -101,6 +105,30 @@ public class User implements Serializable{
 
     public void setImgpath(String imgpath) {
         this.imgpath = imgpath;
+    }
+
+    public Master getMaster() {
+        return master;
+    }
+
+    public void setMaster(Master master) {
+        this.master = master;
+    }
+
+    public Province getProvince() {
+        return province;
+    }
+
+    public void setProvince(Province province) {
+        this.province = province;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 
     @Override

@@ -8,6 +8,7 @@
         $fb.datagrid({
             url:"<c:url value='/feedback/queryByPage'/>",
             method:"post",
+            fit:true,
             pagination:true,
             pageNumber:1,
             pageList:[2,4,6,8],

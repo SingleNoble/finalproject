@@ -9,6 +9,7 @@
             $tabs=$("#tabs");
             $user=$("#user");
             $.post("<c:url value='/menu/queryAll'/>",function (menus) {
+                showuser();
                 $.each(menus,function (i,menu) {
                     var content = "<div style='text-align: center;'>";
                     $.each(menu.children,function (j,child) {

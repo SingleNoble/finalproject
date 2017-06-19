@@ -9,14 +9,29 @@
 	</insert>
 
 	<!-- 根据用户名查询 -->
-	<select id="selectById" parameterType="string">
+	<select id="selectByName" parameterType="string">
 		select id,name,password,salt,phone from f_manager where name=#{name}
 	</select>
+
+    <!--根据id查一个-->
+    <select id="selectById" resultType="manager" parameterType="string">
+        select id,name,password,salt,phone from f_manager where id=#{id}
+    </select>
 
 	<!--查询所有-->
 	<select id="selectAll" resultType="manager">
 		select id,name,password,salt,phone from f_manager
 	</select>
+
+	<!--更新-->
+	<update id="update" parameterType="manager">
+		update f_manager set name=#{name},phone=#{phone} where id=#{id}
+	</update>
+
+	<!--删除-->
+	<delete id="delete" parameterType="string">
+		delete from f_manager where id=#{id}
+	</delete>
 
 
 </mapper>
