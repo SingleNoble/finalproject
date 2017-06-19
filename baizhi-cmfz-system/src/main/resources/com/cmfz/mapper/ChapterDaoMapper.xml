@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmfz.dao.ChapterDao">
+
+    <insert id="insert" parameterType="chapter" >
+		insert into f_chapter values(#{id},#{oldname},#{newname},#{filepath},#{filesize},#{contenttype},#{album.id})
+    </insert>
+
+    <delete id="delete" parameterType="String">
+		delete from f_chapter where id=#{id}
+    </delete>
+
+    <select id="selectByAlbum" resultType="chapter">
+        select id,oldname,newname,filepath,filesize,contenttype,albumid from f_chapter where albumid=#{albumId}
+    </select>
+
+</mapper>

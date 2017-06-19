@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmfz.dao.AlbumDao">
+
+    <insert id="insert" parameterType="album" >
+        insert into f_album values(#{id},#{name},#{author},#{teller},#{num},#{content},#{createdate},#{grade},#{imgpath})
+    </insert>
+
+    <delete id="delete" parameterType="String">
+        delete from f_album where id=#{id}
+    </delete>
+
+    <select id="selectAll" resultType="album">
+        select id,name,author,teller,num,content,createdate,grade,imgpath from f_album
+    </select>
+
+</mapper>

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" language="java" %>
 <script>
     var $cht,$dac;
     $(function(){
@@ -11,7 +11,7 @@
             fit:true,
             fitColumns:true,
             pagination:true,
-            toolbar:'#tt5',
+            //toolbar:'#tt5',
             pageNumber:1,
             pageSize:10,
             pageList:[10,20,50],
@@ -37,15 +37,15 @@
     function delc(id) {
         $.messager.confirm('确认','您确认想要删除记录吗？',function(r){
             if (r){
-                $.post('${pageContext.request.contextPath}/chapter/drop',{id:id},function(){
+                $.post('${pageContext.request.contextPath}/chapter/delete',{id:id},function(result){
+                    $.messager.show({
+                        title:'提示信息',
+                        msg:'删除成功！',
+                        timeout:1500,
+                        showType:'slide'
+                    });
                     $cht.datagrid('reload');
                     $int.datagrid('reload');
-                });
-                $.messager.show({
-                    title:'提示信息',
-                    msg:'删除成功！',
-                    timeout:1500,
-                    showType:'slide'
                 });
             }
         });

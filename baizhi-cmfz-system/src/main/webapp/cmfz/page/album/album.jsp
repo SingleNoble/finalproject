@@ -7,7 +7,7 @@
         $(".btn").linkbutton();
         $int.datagrid({
             striped:true,
-            url:'${pageContext.request.contextPath}/album/queryAllByPage',
+            url:'${pageContext.request.contextPath}/album/queryByPage',
             fit:true,
             fitColumns:true,
             pagination:true,
@@ -16,15 +16,15 @@
             pageSize:10,
             pageList:[10,20,50],
             columns:[[
-                {field:'id',title:'ID',width:240,align:'center'},
-                {field:'name',title:'名称',width:150,align:'center'},
-                {field:'author',title:'作者',width:150,align:'center'},
-                {field:'teller',title:'播音员',width:150,align:'center'},
-                {field:'num',title:'集数',width:150,align:'center'},
-                {field:'content',title:'简介',width:150,align:'center'},
+                {field:'id',title:'ID',width:40,align:'center'},
+                {field:'name',title:'名称',width:80,align:'center'},
+                {field:'author',title:'作者',width:80,align:'center'},
+                {field:'teller',title:'播音员',width:80,align:'center'},
+                {field:'num',title:'集数',width:40,align:'center'},
+                {field:'content',title:'简介',width:140,align:'center'},
                 {field:'createdate',title:'创建日期',width:100,align:'center'},
-                {field:'grade',title:'评分',width:50,align:'center'},
-                {field:'imgpath',title:'封面',width:150,align:'center'},
+                {field:'grade',title:'评分',width:40,align:'center'},
+                {field:'imgpath',title:'封面',width:140,align:'center'},
                 {title:'操作',field:'options',width:200,
                     formatter:function (value,row,index) {
                         return"<a class='chapter' onClick=\"chapter('"+row.id+"')\">专辑列表</a>" +
@@ -74,9 +74,9 @@
             title:"章节列表",
             iconCls:'icon-text_columns',
             resizable:true,
-            width:1200,
-            height:500,
-            href:'${pageContext.request.contextPath}/cmfz/page/chapter/index.jsp?albumId='+id,
+            width:800,
+            height:400,
+            href:'${pageContext.request.contextPath}/cmfz/page/chapter/chapter.jsp?albumId='+id,
             buttons:[{
                 text:'关闭',
                 iconCls:'icon-cancel',
@@ -88,14 +88,14 @@
     function deli(id) {
         $.messager.confirm('确认','您确认想要删除记录吗？',function(r){
             if (r){
-                $.post('${pageContext.request.contextPath}/album/drop',{'id':id},function(){
+                $.post('${pageContext.request.contextPath}/album/delete',{'id':id},function(result){
+                    $.messager.show({
+                        title:'提示消息',
+                        msg:result.message,
+                        timeout:1000,
+                        showType:'slide'
+                    });
                     $int.datagrid('reload');
-                });
-                $.messager.show({
-                    title:'我的消息',
-                    msg:'删除成功！',
-                    timeout:1000,
-                    showType:'slide'
                 });
             }
         });
@@ -107,8 +107,8 @@
                 $dai.dialog('close',true).html("");
                 $int.datagrid('reload');
                 $.messager.show({
-                    title:'我的消息',
-                    msg:'添加成功！',
+                    title:'提示消息',
+                    msg:"创建成功！！",
                     timeout:1500,
                     showType:'slide'
                 });

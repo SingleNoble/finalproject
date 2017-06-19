@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * 表f_album对应的实体类
  */
-public class Albun implements Serializable{
+public class Album implements Serializable{
     private String id;
     private String name;
     private String author;
@@ -15,11 +15,12 @@ public class Albun implements Serializable{
     private String content;
     private Date createdate;
     private Integer grade;
+    private String imgpath;
 
-    public Albun() {
+    public Album() {
     }
 
-    public Albun(String id, String name, String author, String teller, String num, String content, Date createdate, Integer grade) {
+    public Album(String id, String name, String author, String teller, String num, String content, Date createdate, Integer grade, String imgpath) {
         this.id = id;
         this.name = name;
         this.author = author;
@@ -28,6 +29,7 @@ public class Albun implements Serializable{
         this.content = content;
         this.createdate = createdate;
         this.grade = grade;
+        this.imgpath = imgpath;
     }
 
     public String getId() {
@@ -94,9 +96,17 @@ public class Albun implements Serializable{
         this.grade = grade;
     }
 
+    public String getImgpath() {
+        return imgpath;
+    }
+
+    public void setImgpath(String imgpath) {
+        this.imgpath = imgpath;
+    }
+
     @Override
     public String toString() {
-        return "Albun{" +
+        return "Album{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", author='" + author + '\'' +
@@ -105,6 +115,7 @@ public class Albun implements Serializable{
                 ", content='" + content + '\'' +
                 ", createdate=" + createdate +
                 ", grade=" + grade +
+                ", imgpath='" + imgpath + '\'' +
                 '}';
     }
 }

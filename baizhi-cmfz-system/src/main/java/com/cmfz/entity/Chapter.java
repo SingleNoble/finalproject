@@ -13,6 +13,20 @@ public class Chapter implements Serializable{
     private String filesize;
     private String contenttype;
 
+    private Album album;
+
+    public Chapter() {
+    }
+
+    public Chapter(String id, String oldname, String newname, String filepath, String filesize, String contenttype) {
+        this.id = id;
+        this.oldname = oldname;
+        this.newname = newname;
+        this.filepath = filepath;
+        this.filesize = filesize;
+        this.contenttype = contenttype;
+    }
+
     public String getId() {
         return id;
     }
@@ -61,16 +75,12 @@ public class Chapter implements Serializable{
         this.contenttype = contenttype;
     }
 
-    public Chapter(String id, String oldname, String newname, String filepath, String filesize, String contenttype) {
-        this.id = id;
-        this.oldname = oldname;
-        this.newname = newname;
-        this.filepath = filepath;
-        this.filesize = filesize;
-        this.contenttype = contenttype;
+    public Album getAlbum() {
+        return album;
     }
 
-    public Chapter() {
+    public void setAlbum(Album album) {
+        this.album = album;
     }
 
     @Override

@@ -15,10 +15,9 @@
 
                 $("#imgpath11").val(imgpath);
 
-
                 $.messager.show({
                     title:'提示',
-                    msg:'添加成功~~~~',
+                    msg:'添加成功!!',
                     timeout:1000,
 
                 });
@@ -30,7 +29,7 @@
 
 <form id="uploadImg" method="post" enctype="multipart/form-data">
     <div align="center" style="margin-top: 40px;">
-        <input id="fb11" class="easyui-filebox" name="image" style="width:180px">
+        <input id="fb11" class="easyui-filebox" name="multipartFile" style="width:180px">
         <a id="save" href="javascript:;" onclick="saveImg();" class="easyui-linkbutton" data-options="iconCls:'icon-save'">上传</a>
     </div>
 </form>
